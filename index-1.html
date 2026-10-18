@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FORM/MORE Quotation Admin</title>
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <img class="logo" src="logo.png" alt="FORM/MORE">
+  <div class="seg" role="group" aria-label="Quotation type">
+    <button data-m="design" class="on">With a design</button>
+    <button data-m="idea">Just an idea</button>
+  </div>
+</header>
+
+<main>
+  <section id="form">
+    <h2>Details</h2>
+    <div class="grid">
+      <label>Customer<input id="client" autocomplete="off"></label>
+      <label>Contact<input id="contact" placeholder="Messenger or mobile" autocomplete="off"></label>
+      <label class="w2">Project<input id="project" autocomplete="off"></label>
+      <label>Date<input id="date" type="date"></label>
+      <label>Valid until<input id="valid" type="date"></label>
+    </div>
+
+    <h2>Breakdown</h2>
+    <div id="rows"></div>
+    <div class="grid">
+      <label>Discount (₱)<input id="discount" type="number" min="0" step="0.01"></label>
+      <label class="w2">Notes<textarea id="notes" rows="3"></textarea></label>
+    </div>
+    <div class="bar">
+      <button class="pri" id="save">Save quotation</button>
+      <button id="new">New quotation</button>
+    </div>
+
+    <h2>Download</h2>
+    <div class="files" id="files">
+      <button data-f="pdf">PDF</button>
+      <button data-f="png">PNG</button>
+      <button data-f="xls">Excel</button>
+      <button data-f="doc">Word</button>
+      <button data-f="csv">CSV</button>
+      <button data-f="html">HTML</button>
+      <button data-f="json">JSON</button>
+      <button data-f="txt">Text</button>
+      <button data-f="copy">Copy text</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="sheet" id="sheet"></div>
+  </section>
+
+  <section class="wide">
+    <h2>Saved quotations</h2>
+    <ul id="saved"></ul>
+    <div class="bar">
+      <button id="backup">Download all</button>
+      <label class="btn">Import<input id="import" type="file" accept=".json" hidden></label>
+    </div>
+  </section>
+</main>
+<p id="msg" role="status"></p>
+<script src="script.js"></script>
+</body>
+</html>

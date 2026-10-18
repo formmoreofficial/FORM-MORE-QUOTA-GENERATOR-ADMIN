@@ -1,0 +1,76 @@
+:root{--bg:#26d1cf;--ink:#000;--soft:rgba(255,255,255,.24)}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:1400px;margin:auto;padding:clamp(16px,3vw,40px)}
+h2,.wm{font-family:Michroma,Eurostile,"Arial Black",sans-serif;font-weight:400}
+h2{font-size:.85rem;letter-spacing:.04em;margin:32px 0 12px;padding-top:12px;border-top:1.5px solid var(--ink)}
+#form h2:first-child{margin-top:0}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:clamp(20px,4vw,48px)}
+.logo{width:clamp(170px,30vw,320px);height:auto}
+
+button,.btn{font:inherit;color:var(--ink);background:transparent;border:1.5px solid var(--ink);border-radius:0;padding:10px 16px;cursor:pointer;display:inline-block}
+button:hover,.btn:hover,.pri,.seg .on{background:var(--ink);color:var(--bg)}
+.pri:hover{background:transparent;color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.seg{display:inline-flex;border:1.5px solid var(--ink)}
+.seg button{border:0}
+
+input,textarea{width:100%;font:inherit;color:inherit;background:var(--soft);border:0;border-bottom:1.5px solid var(--ink);border-radius:0;padding:8px}
+input::placeholder{color:rgba(0,0,0,.5)}
+label{display:grid;gap:2px;font-size:.8rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.w2{grid-column:1/-1}
+
+.row{display:grid;grid-template-columns:2ch 1fr 5.5rem 8rem 8rem;gap:12px;align-items:end;padding:10px 0;border-bottom:1px solid var(--ink)}
+.row output{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.row .nm{font-weight:600}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.files{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+
+main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+main>section:nth-child(2){position:sticky;top:16px}
+.wide{grid-column:1/-1}
+
+.sheet{border:1.5px solid var(--ink);padding:clamp(16px,3vw,36px);font-size:clamp(11.5px,1.6vw,14px);overflow-x:auto}
+.sheet .hd,.sheet .meta{display:flex;justify-content:space-between;gap:16px;margin-bottom:24px}
+.sheet .hd img{width:clamp(120px,40%,220px);height:auto;align-self:flex-start}
+.sheet .hd p{text-align:right}
+.sheet small{display:block;opacity:.65}
+.sheet table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.sheet th,.sheet td{padding:8px 4px;text-align:right;border-bottom:1px solid var(--ink)}
+.sheet thead th:nth-child(-n+2),.sheet tbody td:nth-child(-n+2){text-align:left}
+.sheet th{font-weight:600}
+.sheet .tt td{font-weight:700;font-size:1.3em;border-bottom:0}
+.sheet .nt{margin-top:24px}
+
+#saved{list-style:none;padding:0}
+#saved li{display:flex;gap:8px;border-bottom:1px solid var(--ink);padding:6px 0}
+#saved .lk{flex:1;display:flex;justify-content:space-between;gap:12px;text-align:left;border:0;padding:8px 0}
+#saved .lk:hover{background:transparent;color:var(--ink);text-decoration:underline}
+#saved li button:last-child{border:0}
+.empty{opacity:.7;padding:8px 0}
+
+#msg{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;opacity:0;pointer-events:none;transition:opacity .2s}
+#msg.show{opacity:1}
+
+@media (max-width:899px){
+  main{grid-template-columns:1fr}
+  main>section:nth-child(2){position:static}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .row{grid-template-columns:2ch 1fr 1fr}
+  .row .nm,.row output{grid-column:2/-1}
+  .row output{text-align:right}
+  .row label:nth-of-type(1){grid-column:2}
+  .row label:nth-of-type(2){grid-column:3}
+  .seg,.seg button{width:100%}
+}
+@media print{
+  @page{margin:0}
+  body *{visibility:hidden}
+  #sheet,#sheet *{visibility:visible}
+  #sheet{position:absolute;left:0;top:0;width:100%;border:0;overflow:visible;font-size:13px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
